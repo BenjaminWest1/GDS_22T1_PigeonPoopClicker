@@ -11,6 +11,7 @@ public class ClockScript : MonoBehaviour
     private float countdownTimerRounded = 0.0f;
 
     public Text clockDisplay;
+    public int decimalPlacesNumberofZeroes = 1000;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,8 @@ public class ClockScript : MonoBehaviour
         if (countdownTimer > 0)
         {
             countdownTimer -= Time.deltaTime;
-            countdownTimerRounded = Mathf.Round(countdownTimer * 1000) / 1000;
-            clockDisplay.text = "Time: " + countdownTimer.ToString();
+            countdownTimerRounded = Mathf.Round(countdownTimer * decimalPlacesNumberofZeroes) / decimalPlacesNumberofZeroes;
+            clockDisplay.text = "Time: " + countdownTimerRounded.ToString();
             //Debug.Log(countdownTimer);
         }
         else
