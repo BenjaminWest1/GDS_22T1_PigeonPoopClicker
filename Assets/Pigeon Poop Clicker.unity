@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownMax: 3
   countdownText: 3
-  countdown: 0
+  countdown: 3
   countdownTimerText: {fileID: 1934715145}
   countdownTimer: {fileID: 1934715144}
 --- !u!1 &2045376516

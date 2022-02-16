@@ -7,11 +7,11 @@ public class CountingScript : MonoBehaviour
 {
     public float countdownMax = 3.0f;
     public float countdownText = 3.0f;
-    public float countdown = 0.0f;
+    public float countdown = 3.0f;
     public Text countdownTimerText;
     public GameObject countdownTimer;
 
-    void OnAwake()
+    void OnStart()
     {
         countdown = countdownMax;
     }
@@ -19,6 +19,7 @@ public class CountingScript : MonoBehaviour
     void Update()
     {
         countdown -= Time.deltaTime;
+        Debug.Log(countdown);
 
         if (countdown > 0)
         {
@@ -31,7 +32,7 @@ public class CountingScript : MonoBehaviour
         }
         else
         {
-
+            countdown = countdownMax;
             countdownTimer.SetActive(false);
         }
     }
