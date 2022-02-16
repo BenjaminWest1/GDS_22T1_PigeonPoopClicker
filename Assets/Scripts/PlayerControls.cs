@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     public GameObject poop;
-    public Vector3 spawnPos;
+    public GameObject pigeon;
+    public Vector3 poopSpawnPos;
     [SerializeField]
     private Camera mainCamera;
     // Start is called before the first frame update
@@ -29,12 +30,15 @@ public class PlayerControls : MonoBehaviour
         //Vector3 mousePos = Input.mousePosition;   
         //mousePos.z=Camera.main.nearClipPlane;
         //Vector3 Worldpos=Camera.main.ScreenToWorldPoint(mousePos);
-        
+
+        Vector3 poopSpawnPos = pigeon.transform.position;
+
+
         //Player Input "Left Click" to poop
         if (Input.GetMouseButtonDown(0))
         {
             //Instantiate(poop, raycastHit.point, Quaternion.identity);
-            Instantiate(poop, raycastHit.point, Quaternion.identity);
+            Instantiate(poop, poopSpawnPos, Quaternion.identity);
         }
     }
 }

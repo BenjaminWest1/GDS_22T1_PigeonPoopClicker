@@ -17,6 +17,12 @@ public class VehicleInteractions : MonoBehaviour
         
     }
 
+    //Instantiate (must spawn within a certain area)
+
+    //Trigger (must have audio noise and addition to score)
+
+    //Addition to score
+
     private void OnCollisionEnter(Collision other)
     {
         throw new NotImplementedException();
