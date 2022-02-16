@@ -11,17 +11,31 @@ public class ClockScript : MonoBehaviour
     private float countdownTimerRounded = 0.0f;
 
     public Text clockDisplay;
+    public CountdownScript countdownScript;
+    public bool boolVariable = false;
+    // bool booling = false;
 
     // Start is called before the first frame update
     void Start()
     {
         countdownTimer = maxTime;
+        //booling = countdownScript.GetComponent<CountdownScript>();
+        countdownScript.BeginCountdown();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateClock();
+        
+        if (countdownScript != null)
+        {
+            boolVariable = countdownScript.boolin;
+
+            if (boolVariable)
+            {
+                UpdateClock();
+            }
+        }
     }
 
     private void UpdateClock()
@@ -30,7 +44,7 @@ public class ClockScript : MonoBehaviour
         {
             countdownTimer -= Time.deltaTime;
             countdownTimerRounded = Mathf.Round(countdownTimer * 1000) / 1000;
-            clockDisplay.text = "Time: " + countdownTimer.ToString();
+            clockDisplay.text = "Time: " + countdownTimerRounded.ToString();
             //Debug.Log(countdownTimer);
         }
         else
