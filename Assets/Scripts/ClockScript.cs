@@ -12,13 +12,21 @@ public class ClockScript : MonoBehaviour
 
     public Text clockDisplay;
     public CountdownScript countdownScript;
+
+    AudioSource audioSource;
+    public AudioClip audioClip;
+    public GameObject cameraAudio;
+
     public bool boolVariable = false;
+    public bool countdownActive = false;
+    private bool playOnce = true;
     // bool booling = false;
 
     // Start is called before the first frame update
     void Start()
     {
         countdownTimer = maxTime;
+        audioSource = cameraAudio.GetComponent<AudioSource>();
         //booling = countdownScript.GetComponent<CountdownScript>();
         countdownScript.BeginCountdown();
     }
@@ -34,6 +42,11 @@ public class ClockScript : MonoBehaviour
             if (boolVariable)
             {
                 UpdateClock();
+                if (playOnce)
+                {
+                    audioSource.PlayOneShot(audioClip);
+                    playOnce = false;
+                }
             }
         }
     }
@@ -45,11 +58,15 @@ public class ClockScript : MonoBehaviour
             countdownTimer -= Time.deltaTime;
             countdownTimerRounded = Mathf.Round(countdownTimer * 1000) / 1000;
             clockDisplay.text = "Time: " + countdownTimerRounded.ToString();
+            countdownActive = true;
             //Debug.Log(countdownTimer);
         }
         else
         {
             clockDisplay.text = "Time: 0.000";
+            boolVariable = false;
+            countdownScript.boolin = boolVariable;
+            countdownActive = false;
         }
     }
 }

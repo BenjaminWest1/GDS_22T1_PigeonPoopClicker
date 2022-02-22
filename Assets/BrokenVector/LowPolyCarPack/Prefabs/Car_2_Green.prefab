@@ -266,7 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  carHit: {fileID: 2100000, guid: 7f915564e02d7624aaa88d7674e83075, type: 2}
+  carHit: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  audioClip: {fileID: 8300000, guid: 3d406d846b289c34ebbca9b9ff8a0337, type: 3}
+  isHit: 0
 --- !u!65 &778136025159905514
 BoxCollider:
   m_ObjectHideFlags: 0

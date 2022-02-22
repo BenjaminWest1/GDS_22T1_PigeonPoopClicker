@@ -9,6 +9,12 @@ public class CountdownScript : MonoBehaviour
     public GameObject countdownTimer;
     public bool boolin = false;
 
+    //void Update()
+    //{
+
+        //BeginCountdown();
+    //}
+
     public void BeginCountdown()
     {
         countdownTimer.SetActive(true);
