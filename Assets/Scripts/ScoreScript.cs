@@ -7,10 +7,11 @@ public class ScoreScript : MonoBehaviour
 {
     public Text scoreDisplay;
     AudioSource audioSource;
-    public AudioClip audioClip;
+    public AudioClip splat;
+    public AudioClip funnyHorn;
     public GameObject cameraAudio;
 
-    private int score = 0;
+    public int score = 0;
     public static int highScore = 0;
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class ScoreScript : MonoBehaviour
     {
         score += scoreIncrement;
         scoreDisplay.text = "Score: " + score.ToString();
-        audioSource.PlayOneShot(audioClip);
+        audioSource.PlayOneShot(splat);
     }
 
     public void ResetScore()
@@ -32,13 +33,13 @@ public class ScoreScript : MonoBehaviour
         scoreDisplay.text = "Score: 0";
     }
 
-    public void HighScore()
+    public int HighScore()
     {
         if (score > highScore)
         {
             highScore = score;
-            //bool for changing UI
+            audioSource.PlayOneShot(funnyHorn);
         }
-        //set active end game UI, displaying score
+        return highScore;
     }
 }

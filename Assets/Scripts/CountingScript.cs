@@ -13,6 +13,7 @@ public class CountingScript : MonoBehaviour
     public GameObject countdownTimer;
     public GameObject cameraAudio;
     public CountdownScript countdownController;
+    public IngameSound ingameSound;
     AudioSource audioSource;
     public AudioClip audioClip;
     private bool playedGo = false;
@@ -21,9 +22,15 @@ public class CountingScript : MonoBehaviour
     {
         countdown = countdownMax;
         audioSource = cameraAudio.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(audioClip);
     }
 
     void Update()
+    {
+        CountdownToGame();
+    }
+
+    public void CountdownToGame()
     {
         countdown -= Time.deltaTime;
         //Debug.Log(countdown);
@@ -33,7 +40,7 @@ public class CountingScript : MonoBehaviour
             countdownText = Mathf.Ceil(countdown);
             if (countdownText != oldCountdownText)
             {
-                audioSource.PlayOneShot(audioClip); 
+                audioSource.PlayOneShot(audioClip);
             }
             countdownTimerText.text = countdownText.ToString();
             oldCountdownText = countdownText;
@@ -51,6 +58,7 @@ public class CountingScript : MonoBehaviour
         {
             countdown = countdownMax;
             countdownController.boolin = true;
+            ingameSound.BeginGame();
             countdownTimer.SetActive(false);
             playedGo = false;
         }
