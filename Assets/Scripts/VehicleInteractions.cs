@@ -7,12 +7,8 @@ public class VehicleInteractions : MonoBehaviour
 {
     public GameObject target;
     public Material carHit;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isHit = false;
+    
 
     // Update is called once per frame
     void Update()
@@ -22,7 +18,7 @@ public class VehicleInteractions : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Poop"))
+        if(other.gameObject.CompareTag("Poop") && isHit == false)
         {
             target = other.gameObject;
             //Change Colour
@@ -30,7 +26,8 @@ public class VehicleInteractions : MonoBehaviour
             //Add Audioclip noise
 
             //Add to score
-            FindObjectOfType<ScoreScript>().UpdateScore(1);
+            FindObjectOfType<ScoreScript>().UpdateScore(100);
+            isHit = true;
 
             Debug.Log("Hit Confirmed");
         }

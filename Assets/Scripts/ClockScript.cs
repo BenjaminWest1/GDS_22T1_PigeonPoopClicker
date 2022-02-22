@@ -11,18 +11,37 @@ public class ClockScript : MonoBehaviour
     private float countdownTimerRounded = 0.0f;
 
     public Text clockDisplay;
-    public int decimalPlacesNumberofZeroes = 1000;
+    public CountdownScript countdownScript;
+    public GameObject endMenu;
+    public EndMenu endMenuScript;
+    public IngameSound ingameSound;
+
+    public bool boolVariable = false;
+    public bool countdownActive = false;
+    //private bool playOnce = true;
+    // bool booling = false;
 
     // Start is called before the first frame update
     void Start()
     {
         countdownTimer = maxTime;
+        //booling = countdownScript.GetComponent<CountdownScript>();
+        countdownScript.BeginCountdown();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateClock();
+        
+        if (countdownScript != null)
+        {
+            boolVariable = countdownScript.boolin;
+
+            if (boolVariable)
+            {
+                UpdateClock();
+            }
+        }
     }
 
     private void UpdateClock()
@@ -30,13 +49,20 @@ public class ClockScript : MonoBehaviour
         if (countdownTimer > 0)
         {
             countdownTimer -= Time.deltaTime;
-            countdownTimerRounded = Mathf.Round(countdownTimer * decimalPlacesNumberofZeroes) / decimalPlacesNumberofZeroes;
+            countdownTimerRounded = Mathf.Round(countdownTimer * 1000) / 1000;
             clockDisplay.text = "Time: " + countdownTimerRounded.ToString();
+            countdownActive = true;
             //Debug.Log(countdownTimer);
         }
         else
         {
             clockDisplay.text = "Time: 0.000";
+            boolVariable = false;
+            countdownScript.boolin = boolVariable;
+            countdownActive = false;
+            endMenu.SetActive(true);
+            endMenuScript.EndGame();
+            ingameSound.EndOfGame();
         }
     }
 }
