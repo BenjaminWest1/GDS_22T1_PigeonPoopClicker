@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class VehicleInteractions : MonoBehaviour
 {
+    public GameObject target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +19,17 @@ public class VehicleInteractions : MonoBehaviour
         
     }
 
-    //Instantiate (must spawn within a certain area)
-
-    //Trigger (must have audio noise and addition to score)
-
-    //Addition to score
-
-    private void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        throw new NotImplementedException();
+        if(other.gameObject.CompareTag("Poop"))
+        {
+            target = other.gameObject;
+            //Add Audioclip noise
+
+            //Add to score
+
+            Debug.Log("Hit Confirmed");
+        }
+        
     }
 }

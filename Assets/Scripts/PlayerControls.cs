@@ -32,6 +32,7 @@ public class PlayerControls : MonoBehaviour
         //Vector3 Worldpos=Camera.main.ScreenToWorldPoint(mousePos);
 
         Vector3 poopSpawnPos = pigeon.transform.position;
+        //raycastHit.point = pigeon.transform.position.y(50);
 
 
         //Player Input "Left Click" to poop
